@@ -43,7 +43,7 @@
   --color-clay: var(--clay);
   --color-azure: var(--azure);
   --color-azure-light: var(--azure-light);
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Google Sans", "Google Sans Text", "Product Sans", "Fraunces", Georgia, serif;
   --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
   --shadow-camp: 0 18px 40px -22px color-mix(in oklab, var(--forest-deep) 55%, transparent);
   --shadow-lift: 0 26px 60px -26px color-mix(in oklab, var(--forest-deep) 65%, transparent);
