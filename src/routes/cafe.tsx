@@ -82,7 +82,7 @@ function Cafe() {
       <div className="mx-auto max-w-5xl px-4 py-16">
         <div className="grid gap-8">
           {sections.map((s) => (
-            <section key={s.title} className="card-camp p-6 sm:p-8">
+            <section key={s.title} className="card-camp card-interactive p-6 sm:p-8">
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4 border-b border-border pb-4 sm:flex sm:justify-between">
                 <h2 className="min-w-0 text-2xl">{s.title}</h2>
                 <p className="shrink-0 text-xs text-muted-foreground">{s.note}</p>

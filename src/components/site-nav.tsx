@@ -7,6 +7,7 @@ const links = [
   { to: "/accommodations", label: "Accommodations" },
   { to: "/cafe", label: "Cafe" },
   { to: "/explore", label: "Explore" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteNav() {
@@ -41,7 +42,7 @@ export function SiteNav() {
               {l.label}
             </Link>
           ))}
-          <Link to="/accommodations" hash="book" className="btn-base btn-water ml-2">
+          <Link to="/accommodations" hash="book" className="btn-base btn-water ml-2 transition-transform hover:-translate-y-0.5">
             Book a Stay
           </Link>
         </nav>
