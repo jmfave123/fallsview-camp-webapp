@@ -21,6 +21,8 @@ export const Route = createFileRoute("/cafe")({
   component: Cafe,
 });
 
+const DELAYS = ["delay-1", "delay-2", "delay-3", "delay-4"] as const;
+
 const sections = [
   {
     title: "All-Day Breakfast",
@@ -64,15 +66,15 @@ function Cafe() {
           width={1400}
           height={900}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full scale-105 object-cover fade-in"
         />
         <div className="absolute inset-0 bg-forest-deep/70" />
         <div className="relative mx-auto max-w-6xl px-4 py-24 text-primary-foreground">
-          <p className="eyebrow text-azure-light">Kitchen & Roastery</p>
-          <h1 className="mt-3 max-w-2xl text-4xl sm:text-5xl">
+          <p className="eyebrow text-azure-light rise-in">Kitchen &amp; Roastery</p>
+          <h1 className="mt-3 max-w-2xl text-4xl rise-in delay-1 sm:text-5xl">
             A short menu, a shorter supply chain
           </h1>
-          <p className="mt-4 max-w-xl opacity-90">
+          <p className="mt-4 max-w-xl opacity-90 rise-in delay-2">
             Everything is cooked to order in an open kitchen beside the farm terraces. If a dish
             runs out, it means the harvest did too.
           </p>
@@ -81,8 +83,11 @@ function Cafe() {
 
       <div className="mx-auto max-w-5xl px-4 py-16">
         <div className="grid gap-8">
-          {sections.map((s) => (
-            <section key={s.title} className="card-camp card-interactive p-6 sm:p-8">
+          {sections.map((s, i) => (
+            <section
+              key={s.title}
+              className={`card-camp card-interactive rise-in ${DELAYS[i % DELAYS.length]} p-6 sm:p-8`}
+            >
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4 border-b border-border pb-4 sm:flex sm:justify-between">
                 <h2 className="min-w-0 text-2xl">{s.title}</h2>
                 <p className="shrink-0 text-xs text-muted-foreground">{s.note}</p>
