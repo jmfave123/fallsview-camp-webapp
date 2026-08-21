@@ -197,3 +197,96 @@
   box-shadow: var(--shadow-camp);
   overflow: hidden;
 }
+
+/* ---- Motion & interaction ---- */
+
+@keyframes camp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes camp-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility page-enter {
+  animation: camp-rise 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility rise-in {
+  animation: camp-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility fade-in {
+  animation: camp-fade 700ms ease both;
+}
+
+@utility delay-1 {
+  animation-delay: 90ms;
+}
+@utility delay-2 {
+  animation-delay: 180ms;
+}
+@utility delay-3 {
+  animation-delay: 270ms;
+}
+@utility delay-4 {
+  animation-delay: 360ms;
+}
+
+@utility card-interactive {
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease,
+    border-color 260ms ease;
+
+  & img {
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklab, var(--azure) 40%, var(--color-border));
+  }
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+@utility field-error {
+  border-color: var(--color-destructive);
+
+  &:hover,
+  &:focus {
+    border-color: var(--color-destructive);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--destructive) 25%, transparent);
+  }
+}
+
+@utility error-text {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-destructive);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
