@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Users, BedDouble, Check } from "lucide-react";
+import { Users, BedDouble, Check, AlertCircle, CalendarCheck, Loader2 } from "lucide-react";
 
 import nativeCottage from "@/assets/native-cottage.jpg";
 import cabin from "@/assets/cabin.jpg";
