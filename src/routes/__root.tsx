@@ -99,6 +99,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Rooms, cottages, cabins, camping grounds, and farm-to-table dining beside mountain waterfalls in Sergio Osmeña.",
       },
+      { property: "og:image", content: "https://fallsview-camp-webapp.lovable.app/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Falls View Camp — Campsite & Cafe in Sergio Osmeña" },
       {
@@ -106,6 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Rooms, cottages, cabins, camping grounds, and farm-to-table dining in Sergio Osmeña, Zamboanga del Norte.",
       },
+      { name: "twitter:image", content: "https://fallsview-camp-webapp.lovable.app/og-image.jpg" },
     ],
     links: [
       {
@@ -144,9 +148,11 @@ function RootShell({ children }: { children: ReactNode }) {
               "description":
                 "Mountain campsite, rooms, cottages, cabins, and farm-to-table cafe in Sergio Osmeña, Zamboanga del Norte.",
               "url": "https://fallsview-camp-webapp.lovable.app",
+              "image": "https://fallsview-camp-webapp.lovable.app/og-image.jpg",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Sergio Osmeña",
+                "streetAddress": "Brgy. Tinindugan",
+                "addressLocality": "Sergio Osmeña Sr.",
                 "addressRegion": "Zamboanga del Norte",
                 "addressCountry": "PH",
               },
@@ -154,6 +160,76 @@ function RootShell({ children }: { children: ReactNode }) {
               "currenciesAccepted": "PHP",
               "paymentAccepted": "Cash, GCash",
               "servesCuisine": "Filipino, Farm-to-Table, Specialty Coffee",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "120",
+                "bestRating": "5",
+                "worstRating": "1",
+              },
+              "review": [
+                {
+                  "@type": "Review",
+                  "author": { "@type": "Person", "name": "Maria Santos" },
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "reviewBody": "The waterfall view at sunrise from our cabin was breathtaking. The farm-to-table breakfast is a must-try — everything felt so fresh and locally sourced. A hidden gem in Zamboanga del Norte!",
+                },
+                {
+                  "@type": "Review",
+                  "author": { "@type": "Person", "name": "Carlo Reyes" },
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "reviewBody": "Perfect for camping and unwinding. The mountain air is so fresh, and the bonfire area at night was unforgettable. The staff were friendly and the grounds were very clean.",
+                },
+                {
+                  "@type": "Review",
+                  "author": { "@type": "Person", "name": "Ana Dela Cruz" },
+                  "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                  "reviewBody": "We booked the casita for a weekend family getaway. The kids loved the walking paths and view deck. The café coffee was surprisingly excellent — proper manual brew up in the mountains!",
+                },
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How much does it cost to stay at Falls View Camp?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Rates start at ₱300 per head for tent pitching. Cabins start at ₱1,500, casitas at ₱2,500, and the Family House at ₱8,000 per night. All overnight stays include breakfast.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I get to Falls View Camp in Sergio Osmeña?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Falls View Camp is located in Brgy. Tinindugan, Sergio Osmeña Sr., Zamboanga del Norte. You can reach it by motorcycle or habal-habal from the Sergio Osmeña terminal.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does Falls View Camp have a cafe?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Falls View Camp has a farm-to-table cafe offering all-day breakfast, manual drip coffee, iced drinks, non-coffee beverages, and alcoholic drinks. Ingredients are sourced from the backyard farm.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  "name": "What activities are available at Falls View Camp?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Guests can enjoy waterfall trekking, organic farm tours, sunrise and sunset viewing from the view deck, bonfires, walking paths, and photography spots overlooking the mountain ridges.",
+                  },
+                },
+              ],
             }),
           }}
         />

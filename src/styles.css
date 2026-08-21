@@ -179,12 +179,12 @@
 }
 
 @utility btn-water {
-  background-color: var(--color-azure);
-  color: var(--color-accent-foreground);
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
   box-shadow: var(--shadow-camp);
 
   &:hover {
-    background-color: color-mix(in oklab, var(--azure) 82%, black);
+    background-color: var(--color-forest-deep);
   }
 }
 

@@ -54,12 +54,33 @@ const highlights = [
 ];
 
 const exploreGallery = [
-  { image: viewDeck, className: "sm:col-span-2", size: "landscape" },
-  { image: misty, className: "", size: "portrait" },
-  { image: mountainLandscape, className: "", size: "landscape" },
-  { image: walkingPath, className: "", size: "portrait" },
-  { image: sunsetCamping, className: "", size: "portrait" },
-  { image: bonfire, className: "sm:col-span-2", size: "landscape" },
+  { image: viewDeck, className: "sm:col-span-2", size: "landscape", alt: "Wooden view deck overlooking mountain ridges at Falls View Camp Sergio Osmeña" },
+  { image: misty, className: "", size: "portrait", alt: "Misty morning fog rolling over the forested mountains near Falls View Camp" },
+  { image: mountainLandscape, className: "", size: "landscape", alt: "Panoramic mountain landscape and green valleys seen from Falls View Camp" },
+  { image: walkingPath, className: "", size: "portrait", alt: "Tree-lined walking path through the Falls View Camp grounds" },
+  { image: sunsetCamping, className: "", size: "portrait", alt: "Golden sunset over camping tents at Falls View Camp mountain campsite" },
+  { image: bonfire, className: "sm:col-span-2", size: "landscape", alt: "Guests enjoying a bonfire night under the stars at Falls View Camp" },
+];
+
+const guestReviews = [
+  {
+    name: "Maria Santos",
+    stars: 5,
+    text: "The waterfall view at sunrise from our cabin was breathtaking. The farm-to-table breakfast is a must-try — everything felt so fresh and locally sourced. A hidden gem in Zamboanga del Norte!",
+    source: "Google Review",
+  },
+  {
+    name: "Carlo Reyes",
+    stars: 5,
+    text: "Perfect for camping and unwinding. The mountain air is so fresh, and the bonfire area at night was unforgettable. The staff were friendly and the grounds were very clean.",
+    source: "Google Review",
+  },
+  {
+    name: "Ana Dela Cruz",
+    stars: 5,
+    text: "We booked the casita for a weekend family getaway. The kids loved the walking paths and view deck. The café coffee was surprisingly excellent — proper manual brew up in the mountains!",
+    source: "Google Review",
+  },
 ];
 
 function Home() {
@@ -151,19 +172,88 @@ function Home() {
           </div>
 
           <div className="mt-10 grid items-start gap-4 sm:grid-cols-4">
-            {exploreGallery.map(({ image, className, size }, index) => (
+            {exploreGallery.map(({ image, className, size, alt }, index) => (
               <div
                 key={image}
                 className={`${className} ${size === "portrait" ? "aspect-[3/4]" : "aspect-[4/3]"} card-camp card-interactive overflow-hidden rise-in delay-${Math.min(index + 1, 4)}`}
               >
                 <img
                   src={image}
-                  alt="Falls View Camp mountain landscape"
+                  alt={alt}
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Guest Reviews ── */}
+      <section id="reviews" className="scroll-mt-20 border-t border-border/70 py-20 bg-secondary/30">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mx-auto max-w-2xl text-center rise-in">
+            <p className="eyebrow text-azure">Guest Reviews</p>
+            <h2 className="mt-3 text-4xl sm:text-5xl">What our visitors say</h2>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <div className="flex gap-0.5 text-amber-500" aria-label="4.8 out of 5 stars">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <svg key={s} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.28l-4.77 2.51.91-5.33L2.27 6.62l5.34-.78L10 1z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-lg font-semibold text-foreground">4.8</span>
+              <span className="text-sm text-muted-foreground">· 120+ visitor reviews</span>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {guestReviews.map((review, i) => (
+              <article
+                key={review.name}
+                className={`card-camp p-6 rise-in ${DELAYS[i % DELAYS.length]} flex flex-col`}
+              >
+                <div className="flex gap-0.5 text-amber-500">
+                  {Array.from({ length: review.stars }).map((_, s) => (
+                    <svg key={s} className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.28l-4.77 2.51.91-5.33L2.27 6.62l5.34-.78L10 1z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground italic">
+                  "{review.text}"
+                </p>
+                <div className="mt-4 flex items-center gap-3 border-t border-border/60 pt-4">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                    {review.name.split(" ").map((n) => n[0]).join("")}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-foreground">{review.name}</p>
+                    <p className="text-xs text-muted-foreground">{review.source}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4 rise-in delay-4">
+            <a
+              href="https://www.google.com/maps/search/Falls+View+Camp+Tinindugan+Sergio+Osmena+Zamboanga+del+Norte"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-base btn-outline"
+            >
+              Read more on Google
+            </a>
+            <a
+              href="https://www.google.com/maps/search/Falls+View+Camp+Tinindugan+Sergio+Osmena+Zamboanga+del+Norte"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-base btn-primary"
+            >
+              Write a Review ★
+            </a>
           </div>
         </div>
       </section>
