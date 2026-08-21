@@ -24,6 +24,8 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const DELAYS = ["delay-1", "delay-2", "delay-3", "delay-4"] as const;
+
 const highlights = [
   {
     icon: Tent,
@@ -51,20 +53,20 @@ function Home() {
           alt="Panoramic view of forested mountain ridges and a tall waterfall at sunrise"
           width={1920}
           height={1088}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full scale-105 object-cover fade-in"
         />
         <div className="absolute inset-0 bg-forest-deep/65" />
         <div className="relative mx-auto flex min-h-[86vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 text-primary-foreground">
-          <p className="eyebrow text-azure-light">Sergio Osmeña · 980 masl</p>
-          <h1 className="mt-4 max-w-3xl text-4xl leading-[1.05] sm:text-6xl">
+          <p className="eyebrow text-azure-light rise-in">Sergio Osmeña · 980 masl</p>
+          <h1 className="mt-4 max-w-3xl rise-in delay-1 text-4xl leading-[1.05] sm:text-6xl">
             Camp where the mountain spills into water.
           </h1>
-          <p className="mt-5 max-w-xl text-base opacity-90 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base opacity-90 rise-in delay-2 sm:text-lg">
             A working highland farm, a small cafe, and three ways to sleep under the pines —
             all facing the falls.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/accommodations" hash="book" className="btn-base btn-water">
+          <div className="mt-8 flex flex-wrap gap-3 rise-in delay-3">
+            <Link to="/accommodations" hash="book" className="btn-base btn-water transition-transform hover:-translate-y-0.5">
               Book a Stay
             </Link>
             <Link
@@ -79,8 +81,11 @@ function Home() {
 
       <section className="mx-auto max-w-6xl px-4 py-20">
         <div className="grid gap-6 md:grid-cols-3">
-          {highlights.map((h) => (
-            <article key={h.title} className="card-camp p-6">
+          {highlights.map((h, i) => (
+            <article
+              key={h.title}
+              className={`card-camp card-interactive rise-in ${DELAYS[i % DELAYS.length]} p-6`}
+            >
               <span className="grid h-11 w-11 place-items-center rounded-lg bg-secondary text-primary">
                 <h.icon className="h-5 w-5" />
               </span>
@@ -93,7 +98,7 @@ function Home() {
 
       <section className="mx-auto max-w-6xl px-4 pb-8">
         <div className="grid items-center gap-10 md:grid-cols-2">
-          <div className="card-camp">
+          <div className="card-camp card-interactive">
             <img
               src={cafeTable}
               alt="Farm-to-table breakfast spread with garden vegetables, bread and coffee"

@@ -25,6 +25,8 @@ export const Route = createFileRoute("/explore")({
   component: Explore,
 });
 
+const DELAYS = ["delay-1", "delay-2", "delay-3", "delay-4"] as const;
+
 const activities = [
   {
     name: "Waterfall Trekking",
@@ -63,16 +65,19 @@ const activities = [
 function Explore() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14">
-      <p className="eyebrow text-wood">Explore</p>
-      <h1 className="mt-3 text-4xl sm:text-5xl">Days that start before the sun</h1>
-      <p className="mt-4 max-w-2xl text-muted-foreground">
+      <p className="eyebrow text-wood rise-in">Explore</p>
+      <h1 className="mt-3 text-4xl rise-in delay-1 sm:text-5xl">Days that start before the sun</h1>
+      <p className="mt-4 max-w-2xl text-muted-foreground rise-in delay-2">
         Guided by locals who grew up on this mountain. Book any activity at the ranger hut on
         arrival, or add it to your stay request.
       </p>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
-        {activities.map((a) => (
-          <article key={a.name} className="card-camp flex flex-col">
+        {activities.map((a, i) => (
+          <article
+            key={a.name}
+            className={`card-camp card-interactive rise-in ${DELAYS[i % DELAYS.length]} flex flex-col`}
+          >
             <img
               src={a.image}
               alt={a.name}
@@ -98,14 +103,14 @@ function Explore() {
         ))}
       </div>
 
-      <div className="card-camp mt-12 flex flex-col gap-4 p-8 sm:flex-row sm:items-center sm:justify-between">
+      <div className="card-camp card-interactive rise-in delay-4 mt-12 flex flex-col gap-4 p-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-2xl">Ready to pick your pitch?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Cottages, cabins and tent decks fill up fast on weekends.
           </p>
         </div>
-        <Link to="/accommodations" hash="book" className="btn-base btn-water shrink-0">
+        <Link to="/accommodations" hash="book" className="btn-base btn-water shrink-0 transition-transform hover:-translate-y-0.5">
           Book a Stay
         </Link>
       </div>

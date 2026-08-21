@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccommodationsRouteImport } from './routes/accommodations'
 import { Route as CafeRouteImport } from './routes/cafe'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExploreRouteImport } from './routes/explore'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const CafeRoute = CafeRouteImport.update({
   path: '/cafe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExploreRoute = ExploreRouteImport.update({
   id: '/explore',
   path: '/explore',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accommodations': typeof AccommodationsRoute
   '/cafe': typeof CafeRoute
+  '/contact': typeof ContactRoute
   '/explore': typeof ExploreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accommodations': typeof AccommodationsRoute
   '/cafe': typeof CafeRoute
+  '/contact': typeof ContactRoute
   '/explore': typeof ExploreRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/accommodations': typeof AccommodationsRoute
   '/cafe': typeof CafeRoute
+  '/contact': typeof ContactRoute
   '/explore': typeof ExploreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/accommodations' | '/cafe' | '/explore'
+  fullPaths: '/' | '/accommodations' | '/cafe' | '/contact' | '/explore'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/accommodations' | '/cafe' | '/explore'
-  id: '__root__' | '/' | '/accommodations' | '/cafe' | '/explore'
+  to: '/' | '/accommodations' | '/cafe' | '/contact' | '/explore'
+  id: '__root__' | '/' | '/accommodations' | '/cafe' | '/contact' | '/explore'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccommodationsRoute: typeof AccommodationsRoute
   CafeRoute: typeof CafeRoute
+  ContactRoute: typeof ContactRoute
   ExploreRoute: typeof ExploreRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CafeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explore': {
       id: '/explore'
       path: '/explore'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccommodationsRoute: AccommodationsRoute,
   CafeRoute: CafeRoute,
+  ContactRoute: ContactRoute,
   ExploreRoute: ExploreRoute,
 }
 export const routeTree = rootRouteImport
