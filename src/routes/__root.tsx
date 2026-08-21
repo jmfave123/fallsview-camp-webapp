@@ -124,12 +124,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <QueryClientProvider client={queryClient}>
       <SiteNav />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <main>
+      <main key={pathname} className="page-enter">
         <Outlet />
       </main>
       <SiteFooter />
