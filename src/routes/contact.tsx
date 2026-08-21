@@ -21,6 +21,8 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+const DELAYS = ["delay-1", "delay-2", "delay-3", "delay-4"] as const;
+
 const details = [
   {
     icon: MapPin,
@@ -79,7 +81,7 @@ function Contact() {
             {details.map((d, i) => (
               <div
                 key={d.label}
-                className={`card-camp card-interactive rise-in delay-${Math.min(i + 1, 4)} flex items-start gap-3 p-5`}
+                className={`card-camp card-interactive rise-in ${DELAYS[i % DELAYS.length]} flex items-start gap-3 p-5`}
               >
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-secondary text-primary">
                   <d.icon className="h-4 w-4" />
