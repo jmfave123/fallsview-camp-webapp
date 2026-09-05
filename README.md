@@ -36,3 +36,7 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Deploy to Vercel
+
+Import the repository into Vercel and keep the project root at the repository root. The included `vercel.json` runs `npm run build`, while `vite.config.ts` selects Nitro's Vercel preset to generate the SSR function and static assets. No output directory override is needed.
